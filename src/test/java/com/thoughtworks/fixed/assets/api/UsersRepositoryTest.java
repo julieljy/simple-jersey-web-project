@@ -1,8 +1,5 @@
 package com.thoughtworks.fixed.assets.api;
 
-import com.thoughtworks.learning.core.Contact;
-import com.thoughtworks.learning.core.User;
-import com.thoughtworks.learning.core.UsersRepository;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

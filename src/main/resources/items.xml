@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.thoughtworks.learning.core.ItemsRepository" >
+
+    <resultMap id="itemsMapper" type="Items">
+        <id property="barcode" column="barcode" />
+        <result property="name" column="name" />
+        <result property="unit" column="unit" />
+        <result property="price" column="price" />
+        <!--<collection  property="contacts" javaType="ArrayList" column="id" ofType="Contact" select="selectContactsForUser" >-->
+        <!--</collection>-->
+        <!--<collection  property="groups" javaType="ArrayList" column="id" ofType="Group" select="selectGroupsForUser" >-->
+        <!--</collection>-->
+    </resultMap>
+
+    <select id="findItems" resultMap="itemsMapper">
+        select * from allItems
+    </select>
+
+    <!--<insert id="createUser">-->
+        <!--insert into User(Name) values(#{name});-->
+    <!--</insert>-->
+
+    <!--<select id="getUserById" resultMap="userMapper">-->
+        <!--select * from User  where user.id = #{id}-->
+    <!--</select>-->
+
+    <!--<select id="selectContactsForUser" resultType="Contact" >-->
+      <!--select * from Contact where user_id = #{id}-->
+    <!--</select>-->
+
+    <!--<select id="selectGroupsForUser" resultType="Contact" >-->
+        <!--select g.* from MyGroup g, User_Group ug where g.id = ug.group_id and ug.user_id = #{id}-->
+    <!--</select>-->
+</mapper>

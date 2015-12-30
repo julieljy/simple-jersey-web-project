@@ -217,6 +217,7 @@
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/spike_test</url>
                     <user>root</user>
+                    <password>reaishenghuo</password>
                 </configuration>
                 <dependencies>
                     <dependency>

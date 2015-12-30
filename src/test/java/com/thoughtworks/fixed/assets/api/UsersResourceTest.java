@@ -1,9 +1,6 @@
 package com.thoughtworks.fixed.assets.api;
 
-import com.thoughtworks.learning.core.User;
-import org.hamcrest.Matcher;
 import org.junit.Test;
-import org.mockito.ArgumentMatcher;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -19,7 +16,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
-import static sun.security.util.HostnameChecker.match;
 
 public class UsersResourceTest extends TestBase {
     private String basePath = "/users";
