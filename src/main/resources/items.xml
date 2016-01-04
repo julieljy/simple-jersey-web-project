@@ -8,23 +8,29 @@
 <mapper namespace="com.thoughtworks.learning.core.ItemsRepository" >
 
     <resultMap id="itemsMapper" type="Items">
+
         <id property="barcode" column="barcode" />
         <result property="name" column="name" />
         <result property="unit" column="unit" />
         <result property="price" column="price" />
-        <!--<collection  property="contacts" javaType="ArrayList" column="id" ofType="Contact" select="selectContactsForUser" >-->
-        <!--</collection>-->
-        <!--<collection  property="groups" javaType="ArrayList" column="id" ofType="Group" select="selectGroupsForUser" >-->
-        <!--</collection>-->
+
     </resultMap>
 
     <select id="findItems" resultMap="itemsMapper">
         select * from allItems
     </select>
 
-    <!--<insert id="createUser">-->
-        <!--insert into User(Name) values(#{name});-->
-    <!--</insert>-->
+    <insert id="putItems">
+        insert into Inputs(barcode) values(#{barcode});
+    </insert>
+
+    <resultMap id="inputsMapper" type="String">
+        <id  column="barcode"/>
+    </resultMap>
+
+    <select id="getInputs" resultMap="inputsMapper">
+        select * from Inputs
+    </select>
 
     <!--<select id="getUserById" resultMap="userMapper">-->
         <!--select * from User  where user.id = #{id}-->

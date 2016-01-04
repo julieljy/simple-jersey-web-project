@@ -41,6 +41,5 @@
     </environments>
     <mappers>
         <mapper resource="items.xml"/>
-        <!--<mapper resource="group.xml"/>-->
     </mappers>
 </configuration>

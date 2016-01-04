@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface ItemsRepository {
     List<Items> findItems();
+    void putItems(String barcode);
+    List<String> getInputs();
 }
