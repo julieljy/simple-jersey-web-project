@@ -7,19 +7,6 @@
 
 <mapper namespace="com.thoughtworks.learning.core.ItemsRepository" >
 
-    <resultMap id="itemsMapper" type="Items">
-
-        <id property="barcode" column="barcode" />
-        <result property="name" column="name" />
-        <result property="unit" column="unit" />
-        <result property="price" column="price" />
-
-    </resultMap>
-
-    <select id="findItems" resultMap="itemsMapper">
-        select * from allItems
-    </select>
-
     <insert id="putItems">
         insert into Inputs(barcode) values(#{barcode});
     </insert>
@@ -28,10 +15,24 @@
         <id  column="barcode"/>
     </resultMap>
 
-    <select id="getInputs" resultMap="inputsMapper">
-        select * from Inputs
+    <resultMap id="itemsInCartByCountMapper" type="ItemsInCartByCount">
+        <id property="barcode" column="barcode" />
+        <result property="name" column="name" />
+        <result property="unit" column="unit" />
+        <result property="price" column="price" />
+        <result property="count" column="count(Inputs.barcode)" />
+    </resultMap>
+
+    <select id="getItemsInCartByCount" resultMap="itemsInCartByCountMapper">
+        select allItems.*,count(Inputs.barcode) as count from allItems,Inputs where
+        allItems.barcode=Inputs.barcode group by allItems.barcode
     </select>
 
+    <select id="getSaleItemsInCartByCount" resultMap="itemsInCartByCountMapper">
+        select Items.* from Promotions,(select allItems.*,count(Inputs.barcode) as count from
+        allItems,Inputs where allItems.barcode=Inputs.barcode group by allItems.barcode)Items where
+        Items.barcode=Promotions.barcode and Items.count >= 3
+    </select>
     <!--<select id="getUserById" resultMap="userMapper">-->
         <!--select * from User  where user.id = #{id}-->
     <!--</select>-->
