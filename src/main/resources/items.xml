@@ -15,20 +15,28 @@
         <id  column="barcode"/>
     </resultMap>
 
-    <resultMap id="itemsInCartByCountMapper" type="ItemsInCartByCount">
+    <resultMap id="getCartItemsMapper" type="CartItems">
         <id property="barcode" column="barcode" />
         <result property="name" column="name" />
         <result property="unit" column="unit" />
         <result property="price" column="price" />
-        <result property="count" column="count(Inputs.barcode)" />
+        <result property="count" column="count" />
     </resultMap>
 
-    <select id="getItemsInCartByCount" resultMap="itemsInCartByCountMapper">
+    <select id="getCartItems" resultMap="getCartItemsMapper">
         select allItems.*,count(Inputs.barcode) as count from allItems,Inputs where
         allItems.barcode=Inputs.barcode group by allItems.barcode
     </select>
 
-    <select id="getSaleItemsInCartByCount" resultMap="itemsInCartByCountMapper">
+    <resultMap id="getGiftItemsMapper" type="GiftItems">
+        <id property="barcode" column="barcode" />
+        <result property="name" column="name" />
+        <result property="unit" column="unit" />
+        <result property="price" column="price" />
+        <result property="count" column="count" />
+    </resultMap>
+
+    <select id="getGiftItems" resultMap="getGiftItemsMapper">
         select Items.* from Promotions,(select allItems.*,count(Inputs.barcode) as count from
         allItems,Inputs where allItems.barcode=Inputs.barcode group by allItems.barcode)Items where
         Items.barcode=Promotions.barcode and Items.count >= 3

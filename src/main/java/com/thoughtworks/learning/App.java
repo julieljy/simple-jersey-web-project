@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class App {
 
     private static final URI BASE_URI = URI.create("http://localhost:8080/admin/");
-    public static final String ROOT_PATH = "result";
+    public static final String ROOT_PATH = "receipt";
 
     public static void main(String[] args) {
         try {

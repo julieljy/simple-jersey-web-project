@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface ItemsRepository {
     void putItems(String barcode);
-    List<ItemsInCartByCount> getItemsInCartByCount();
-    List<ItemsInCartByCount> getSaleItemsInCartByCount();
+    List<CartItems> getCartItems();
+    List<GiftItems> getGiftItems();
 }
